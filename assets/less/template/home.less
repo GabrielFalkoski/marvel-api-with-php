@@ -1,0 +1,75 @@
+.marvel_characters {
+    
+    &__search { 
+        text-align: center; 
+
+        .text {
+            border: 1px solid #7c7877;
+            box-sizing: border-box;
+            font-size: 27px; 
+            margin: 39px 0 67px; 
+            padding: 16px 19px; 
+            width: 66.8%; 
+            .box-shadow(0px 0px 20px 12px #e3dfdc); 
+            .border-radius(2px);
+        }
+    }
+
+    &__order {
+        border-bottom: 1px dashed #7c7877; 
+        display: none; 
+        height: 27px; 
+        padding-bottom: 47px; 
+        text-align: left;
+        
+        span { 
+            font-size: 21px; 
+        }
+        
+        label { 
+            font-size: 22px; 
+            margin-left: 11px; 
+        }
+        
+        .sort { 
+            margin-left: 17px;
+            vertical-align: 2px; 
+        }
+    }
+
+    &__content {
+        margin-bottom: 13px; 
+
+        &__character { 
+            border-bottom: 1px dashed #7c7877; 
+            padding: 36px 0 25px; 
+            position: relative; 
+            text-align: left; 
+            
+            &:last-child { 
+                border: 0; 
+            }
+            
+            &_content { 
+                padding: 0 8px; 
+            }
+            
+            &_name { 
+                color: #abd0ce; 
+                font-size: 42px; 
+                margin: 0 0 2px; 
+                max-width: 80% 
+            }
+            
+            &_info { 
+                color: #7c7877; 
+                font-size: 21px; 
+            }
+        }
+    }   
+}
+.movie-subtitle { margin-bottom: 0; }
+.movie-cast .movie-subtitle { margin-top: 22px; }
+.movie-rating { height: 54px; position: absolute; right: 0; top: 40px; }
+.movie-rating p { color:#7c7877; float: left; font-size: 21px; line-height: 54px; margin: 0; vertical-align: middle; }
+.rating-value { background: #7c7877; color:#d9d4cf; float: left; height: 100%; line-height: 54px; margin-left: 5px; text-align: center; vertical-align: middle; width: 53px; -webkit-border-radius: 50%; border-radius: 50%; -moz-border-radius: 50%; }
