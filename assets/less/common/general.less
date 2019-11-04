@@ -1,3 +1,10 @@
+body {
+	font-family: @font1;
+	font-weight: 400;
+	min-width: 320px;
+	overflow-y: scroll;
+}
+
 #main { 
 	padding-bottom: 108px; 
 	text-align: center; 
@@ -7,20 +14,4 @@
 	margin: 0 auto; 
 	max-width: 800px; 
 	padding: 0 10px
-}
-
-.show_more { 
-	background: #abd0ce; 
-	color: #fff; 
-	font-size: 18px; 
-	display: none; 
-	margin: 0 auto; 
-	padding: 16px 37px; 
-	.border-radius(2px);
-	.transition(all 0.3s ease-out); 
-	
-	&:hover { 
-		background: #0782EA; 
-		color: #fff; 
-	}
 }

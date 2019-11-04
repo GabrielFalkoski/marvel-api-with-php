@@ -1,23 +1,61 @@
 <?php 
 /**
-* 
-*/
+ * An CallerApi to create a connection and return data with PHP cURL.
+ *
+ * @author     Gabriel Falkoski <https://github.com/gabrielfalkoski>
+ */
 class CallerApi
 {
+	/**
+     * The URL to connection.
+     *
+     * @var string
+     */
 	protected $url;
+
+	/**
+     * The Headers to connection.
+     *
+     * @var array
+     */
 	protected $headers;
-	protected $params;
+
+	/**
+     * The Auth Parameters to connection.
+     *
+     * @var array
+     */
 	private $auth;
 
+	/**
+     * The Parameters to connection.
+     *
+     * @var array
+     */
+	protected $params;
+
+	/**
+      * This method initialize the CallerApi Object.
+	  * 
+	  * @todo implement a setHeaders E-TAG e GZIP
+	  *
+      * @return void
+      */
 	function __construct($url, $header = array(), $auth = array())
 	{
 		$this->setUrl($url);
 		$this->setHeaders($header);
-		// TODO: implement a setHeaders E-TAG
-		// TODO: implement a setHeaders GZIP
 		$this->auth = $auth;
 	}
 
+	/**
+      * This method returns the cURL response from connection.
+      *
+      * @param string $endpoint the endpoint to complete the url connection.
+      * @param array  $params optional parameters to customize the connection.
+      *
+      * @return String a curl_exec handle on success, curl_error handle on errors.
+      */
 	protected function requestApi($endpoint = '', $params = array())
 	{	
 		$this->setParams($params);
@@ -32,6 +70,7 @@ class CallerApi
 		$options = array(
 			CURLOPT_URL => $url . $this->getQueryParams(),
 			CURLOPT_HTTPHEADER => $this->getHeaders(),
+			CURLOPT_RETURNTRANSFER => true
 		);
 		curl_setopt_array($curl, $options);
 
@@ -46,6 +85,17 @@ class CallerApi
 		return $result;
 	}
 
+	/**
+      * This method returns the custom parameters merged with auth parameters.
+      *
+      * @return String
+      */
+	protected function getQueryParams()
+	{
+		$params = array_merge($this->params, $this->auth);
+		return '?' . http_build_query($params);
+	}
+
 	public function getUrl()
 	{
 		return $this->url;
@@ -54,12 +104,6 @@ class CallerApi
 	protected function setUrl($url)
 	{	
 		$this->url = $url;
-	}
-
-	protected function getQueryParams()
-	{
-		$params = array_merge($this->params, $this->auth);
-		return '?' . http_build_query($params);
 	}
 
 	public function getParams()

@@ -33,14 +33,28 @@
 	-moz-border-radius: @border-radius;
 }
 
-@small-smartphone: ~"all and (max-width: "(@smartphone-width - 1) ~")";
-@smartphone: ~"all and (max-width: "(@tablet-width - 1) ~")";
+.animation(@animation) {
+	-webkit-animation: @animation;  
+	-moz-animation:    @animation;
+	-ms-animation:     @animation; 
+	-o-animation:      @animation; 
+	animation:         @animation;  
+}
 
-@tablet: ~"all and (max-width: @{desktop-min-width})";
-@only-tablet: ~"all and (min-width: @{tablet-width}) and (max-width: @{desktop-min-width})";
-@tablet-up: ~"all and (min-width: @{tablet-width})";
-
-@desktop-min: ~"all and (max-width: "(@desktop-width - 1) ~")";
-@only-desktop-min: ~"all and (min-width: "(@desktop-min-width + 1) ~") and (max-width: "(@desktop-width - 1) ~")";
-
-@desktop: ~"all and (min-width: @{desktop-width})";
+.keyframes(@name, @frames) {
+	@-webkit-keyframes @name { 
+		@frames();
+	}
+	@-moz-keyframes @name { 
+		@frames();
+	}
+	@-ms-keyframes @name { 
+		@frames();
+	}
+	@-o-keyframes @name { 
+		@frames();
+	}
+	@keyframes @name { 
+		@frames();
+	}
+}

@@ -2,3 +2,108 @@
 	font-size: 0;
 	clear: both;
 }
+
+.loader {
+	display: none;
+    position: relative;
+    margin: 15px;
+    margin-bottom: 15px;
+    height: 46px;
+    width: 46px;
+    align-content: center;
+    text-align: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+
+	&_a, &_b {
+	    -webkit-transform-origin: 46px;
+	    transform-origin: 46px;
+	    position: absolute;
+	    left: calc(50% - 46px);
+	    top: calc(50% - 23px);
+	    clip: rect(0, 46px, 46px, 23px);
+	    height: 46px;
+	    width: 46px;
+		
+		&::after {
+		    .border-radius(50%);
+		    clip: rect(0, 46px, 46px, 23px);
+		    content: '';
+		    height: 46px;
+		    width: 46px;
+		    position: absolute
+		}
+	}
+	
+	&_a {
+	    .animation(animate-a 1.5s ease infinite);
+		
+		&::after {
+		    .animation(animate-a2 1.5s ease-in-out infinite);
+		}
+	}
+	
+	&_b {
+	    .animation(animate-b 1.5s ease infinite);
+	    .transform(scale(1, -1));
+		
+		&::after {
+		    .animation(animate-b2 1.5s ease-in-out infinite);
+		    .transform(scale(1, -1));
+		}
+	}
+}
+
+.keyframes(animate-a, {
+	from {
+		.transform(rotate(-360deg));
+	}
+	to {
+		.transform(rotate(360deg));
+	}
+});
+.keyframes(animate-a2, {
+	0% {
+		.box-shadow(inset @color1 0 0 0 3px);
+        .transform(rotate(180deg));
+	}
+	40% {
+		.box-shadow(inset @color1 0 0 0 3px);
+        .transform(rotate(70deg));
+	}
+	60% {
+		.box-shadow(inset @color1 0 0 0 3px);
+        .transform(rotate(70deg));
+	}
+	100% {
+		.box-shadow(inset @color1 0 0 0 3px);
+        .transform(rotate(180deg));
+	}
+});
+.keyframes(animate-b, {
+	from {
+        .transform(rotate(-180deg));
+    }
+    to {
+        .transform(rotate(540deg));
+    }
+});
+.keyframes(animate-b2, {
+	0% {
+        .box-shadow(inset @color1 0 0 0 3px);
+        .transform(rotate(180deg));
+    }
+    40% {
+        .box-shadow(inset @color1 0 0 0 3px);
+        .transform(rotate(70deg));
+    }
+    60% {
+        .box-shadow(inset @color1 0 0 0 3px);
+        .transform(rotate(70deg));
+    }
+    100% {
+        .box-shadow(inset @color1 0 0 0 3px);
+        .transform(rotate(180deg));
+    }	
+});
